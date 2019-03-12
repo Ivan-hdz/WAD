@@ -32,13 +32,31 @@ public class TableServlet extends HttpServlet {
     public void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
         res.setHeader("Content-Type", "text/html; charset=UTF-8");
         PrintWriter out = res.getWriter();
-        String paramName;
-        Enumeration<String> params = req.getParameterNames();
-        while(params.hasMoreElements()) {
-            paramName = params.nextElement();
-            out.println("<h1>");
-            out.println(paramName + " = " + req.getParameter(paramName));
-            out.println("</h1>");
+        String fName, lNameA, lNameB, curp, birthday, email, pwd, cPwd;
+        fName = req.getParameter("firstName");
+        lNameA = req.getParameter("lastName");
+        lNameB = req.getParameter("secondLastName");
+        curp = req.getParameter("curp");
+        birthday = req.getParameter("birthday");
+        email = req.getParameter("login");
+        pwd = req.getParameter("password");
+        cPwd = req.getParameter("confPassword");
+        if(pwd.equals(cPwd)) {
+            int id_user = PostgresSQL.insertPerson(fName, lNameA, lNameB, curp, birthday);
+            if(id_user != -1) {
+                int succ = PostgresSQL.insertUsuario(id_user, email, pwd);
+                if(succ != -1) {
+                    int succ2 = PostgresSQL.insertCuenta(PostgresSQL.ADMINISTRADOR, id_user);
+                    if(succ2 != -1)
+                        doGet(req, res);
+                } else {
+                    out.println("<h1>Algo ha salido mal en insertar usuario</h1>");
+                }
+            } else {
+                out.println("<h1>Algo ha salido mal en insertar persona</h1>");
+            }
+        } else {
+            out.println("<h1>Las contraseñas no coinciden </h1>");
         }
     }
 }

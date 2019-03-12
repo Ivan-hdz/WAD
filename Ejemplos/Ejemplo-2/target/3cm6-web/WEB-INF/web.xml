@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<web-app>
+  <display-name>Archetype Created Web Application</display-name>
+  <servlet>
+  	<servlet-name>Ejemplo1</servlet-name>
+  	<display-name>Ejemplo1</display-name>
+  	<description></description>
+  	<servlet-class>mx.ipn.escom.wad.servlets.Ejemplo1</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>Ejemplo2</servlet-name>
+  	<display-name>Ejemplo2</display-name>
+  	<description></description>
+  	<servlet-class>mx.ipn.escom.wad.servlets.Ejemplo2</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>Ejemplo1</servlet-name>
+  	<url-pattern>/Ejemplo1</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>Ejemplo2</servlet-name>
+  	<url-pattern>/Ejemplo2</url-pattern>
+  </servlet-mapping>
+</web-app>
