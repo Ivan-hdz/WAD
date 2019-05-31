@@ -1,0 +1,6 @@
+/home/ivan/Documents/Github/WAD/ProyectoFinal/src/main/java/mx/ivan/wad/ProyectoFinal/User/interfaces/UserDao.java
+/home/ivan/Documents/Github/WAD/ProyectoFinal/src/main/java/mx/ivan/wad/ProyectoFinal/User/classes/UserDaoImpl.java
+/home/ivan/Documents/Github/WAD/ProyectoFinal/src/main/java/mx/ivan/wad/ProyectoFinal/User/UserEntity.java
+/home/ivan/Documents/Github/WAD/ProyectoFinal/src/main/java/mx/ivan/wad/ProyectoFinal/User/classes/UserServiceImpl.java
+/home/ivan/Documents/Github/WAD/ProyectoFinal/src/main/java/mx/ivan/wad/ProyectoFinal/User/interfaces/UserService.java
+/home/ivan/Documents/Github/WAD/ProyectoFinal/src/main/java/mx/ivan/wad/ProyectoFinal/User/classes/UserController.java

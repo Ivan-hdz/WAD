@@ -78,4 +78,5 @@
     <servlet-name>WelcomeServlet</servlet-name>
     <url-pattern>/Welcome</url-pattern>
   </servlet-mapping>
+
 </web-app>

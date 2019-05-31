@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+
+<struts>
+    <constant name="struts.devMode" value="true"/>
+    <constant name="struts.custom.i18n.resources" value="properties/labels"/>
+    <constant name="struts.enable.SlashesInActionNames" value="true"/>
+
+    <package name="default" namespace="" extends="struts-default">
+        <action name="create" method="create" class="userController">
+            <result type="redirect">/list</result>
+        </action>
+        <action name="delete/*" method="delete" class="userController">
+            <param name="user.id">{1}</param>
+            <result type="redirect">/list</result>
+        </action>
+        <action name="list" method="list" class="userController">
+            <result>/view/user/user.jsp</result>
+        </action>
+        <action name="*" method="list" class="userController">
+            <result>/view/user/user.jsp</result>
+        </action>
+    </package>
+
+</struts>

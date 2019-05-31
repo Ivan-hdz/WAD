@@ -1,0 +1,6 @@
+mx/ivan/wad/ProyectoFinal/User/interfaces/UserService.class
+mx/ivan/wad/ProyectoFinal/User/interfaces/UserDao.class
+mx/ivan/wad/ProyectoFinal/User/classes/UserServiceImpl.class
+mx/ivan/wad/ProyectoFinal/User/UserEntity.class
+mx/ivan/wad/ProyectoFinal/User/classes/UserDaoImpl.class
+mx/ivan/wad/ProyectoFinal/User/classes/UserController.class

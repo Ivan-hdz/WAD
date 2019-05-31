@@ -21,7 +21,7 @@ public class WelcomeServlet extends HttpServlet {
             s.setAttribute("isLogged", true);
             res.sendRedirect("TableServlet");
         } else {
-            res.sendError(500);
+            res.sendRedirect("login.jsp");
         }
     }
     private void sendMsgToLoginForm(String msg, HttpServletResponse res) throws IOException {

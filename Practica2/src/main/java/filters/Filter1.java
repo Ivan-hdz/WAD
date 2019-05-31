@@ -32,7 +32,7 @@ public class Filter1 implements Filter {
         Logger log = Logger.getAnonymousLogger();
         log.setLevel(Level.INFO);
 
-        if(!(req.getRequestURI().contains("public") || req.getRequestURI().equals("/practica2/") || req.getRequestURI().contains(".jsp"))) {
+        if(!(req.getRequestURI().contains("Welcome") || req.getRequestURI().contains("public") || req.getRequestURI().equals("/practica2/") || req.getRequestURI().contains(".jsp"))) {
             auth = s.getAttribute("isLogged") != null;
             if(!auth) {
                 allowed = "NOT ALLOWED";
@@ -43,7 +43,7 @@ public class Filter1 implements Filter {
         if(allowed.equals("ALLOWED")) {
             chain.doFilter(request, response);
         } else {
-            res.sendError(500);
+            res.sendError(404);
         }
     }
 
