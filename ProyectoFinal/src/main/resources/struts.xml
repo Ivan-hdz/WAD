@@ -8,8 +8,14 @@
     <constant name="struts.devMode" value="true"/>
     <constant name="struts.custom.i18n.resources" value="properties/labels"/>
     <constant name="struts.enable.SlashesInActionNames" value="true"/>
+    <constant name="struts.enable.DynamicMethodInvocation" value="false" />
+    <constant name="struts.i18n.encoding" value="UTF-8"/>
 
     <package name="default" namespace="" extends="struts-default">
+        <interceptors>
+            <interceptor name="charsetInterceptor"
+                         class="mx.ivan.wad.ProyectoFinal.Interceptors.CharsetInterceptor"/>
+        </interceptors>
         <action name="create" method="create" class="userController">
             <result type="redirect">/list</result>
         </action>
@@ -18,10 +24,12 @@
             <result type="redirect">/list</result>
         </action>
         <action name="list" method="list" class="userController">
-            <result>/view/user/user.jsp</result>
+            <interceptor-ref name="charsetInterceptor"/>
+            <result>/view/user/user.jspx</result>
         </action>
         <action name="*" method="list" class="userController">
-            <result>/view/user/user.jsp</result>
+            <interceptor-ref name="charsetInterceptor"/>
+            <result>/view/user/user.jspx</result>
         </action>
     </package>
 

@@ -42,11 +42,12 @@
     </dependency>
 <!--    Lombok -->
     <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+
     <dependency>
-      <groupId>org.projectlombok</groupId>
-      <artifactId>lombok</artifactId>
-      <version>1.16.20</version>
-      <scope>provided</scope>
+        <groupId>org.projectlombok</groupId>
+        <artifactId>lombok</artifactId>
+        <version>1.18.4</version>
+        <scope>provided</scope>
     </dependency>
 <!--    Postgres-->
     <!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->
@@ -121,7 +122,6 @@
       <artifactId>struts2-spring-plugin</artifactId>
       <version>2.5.16</version>
     </dependency>
-
 
   </dependencies>
 
