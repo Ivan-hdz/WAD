@@ -5,31 +5,53 @@
         "http://struts.apache.org/dtds/struts-2.5.dtd">
 
 <struts>
+    <constant name="struts.i18n.encoding" value="UTF-8"/>
     <constant name="struts.devMode" value="true"/>
-    <constant name="struts.custom.i18n.resources" value="properties/labels"/>
     <constant name="struts.enable.SlashesInActionNames" value="true"/>
     <constant name="struts.enable.DynamicMethodInvocation" value="false" />
-    <constant name="struts.i18n.encoding" value="UTF-8"/>
+<!--     labels constants -->
+    <constant name="struts.custom.i18n.resources" 
+    	value="
+			labels/user/user,
+			labels/user/user_es,
+			labels/title/title,
+			labels/title/title_es
+			labels/message/message
+			labels/message/message_es
+			labels/labels/label
+			labels/labels/label_es
+	"/>
 
+	
     <package name="default" namespace="" extends="struts-default">
+
         <interceptors>
             <interceptor name="charsetInterceptor"
                          class="mx.ivan.wad.ProyectoFinal.Interceptors.CharsetInterceptor"/>
+            
+            <interceptor-stack name="charsetStack">
+            	<interceptor-ref name="charsetInterceptor" />
+                <interceptor-ref name="defaultStack"/>
+            </interceptor-stack>
+
         </interceptors>
+
+        
         <action name="create" method="create" class="userController">
-            <result type="redirect">/list</result>
+            <result name="success" type="redirect">/list</result>
+            <result name="input, error" type="redirect">/list</result>
         </action>
         <action name="delete/*" method="delete" class="userController">
             <param name="user.id">{1}</param>
             <result type="redirect">/list</result>
         </action>
         <action name="list" method="list" class="userController">
-            <interceptor-ref name="charsetInterceptor"/>
-            <result>/view/user/user.jspx</result>
+            <interceptor-ref name="charsetStack"/>
+            <result>/view/login.jspx</result>
         </action>
         <action name="*" method="list" class="userController">
-            <interceptor-ref name="charsetInterceptor"/>
-            <result>/view/user/user.jspx</result>
+            <interceptor-ref name="charsetStack"/>
+            <result>/view/login.jspx</result>
         </action>
     </package>
 

@@ -7,7 +7,7 @@
     <jsp:directive.page  contentType="text/html; charset=UTF-8"/>
     <html>
     <head>
-        <title>Spring-4 + Struts-3 + Hibernate Integration Demo</title>
+        <title><s:text name="" /></title>
         <style>
             table.list
             {
@@ -23,25 +23,17 @@
     </head>
     <body>
 
-    <h2>Spring-4 + Struts-3 + Hibernate Integration Demo</h2>
+    <H1><s:text name="title.login" /></H1>
+	<s:if test="hasActionErrors()">
+		<s:actionerror />
+	</s:if>
+    <s:form method="post" action="create"  >
 
-    <s:form method="post" action="create">
-        <table>
-            <tr>
-                <td><s:textfield key="label.name" name="user.name"/></td>
-            </tr>
-            <tr>
-                <td><s:textfield key="label.email" name="user.email"/></td>
-            </tr>
-            <tr>
-                <td><s:textfield key="label.password"  name="user.password"/></td>
-            </tr>
-            <tr>
-                <td>
-                    <s:submit key="label.submit" />
-                </td>
-            </tr>
-        </table>
+        <s:textfield key="user.name"  />
+        <s:textfield key="user.email" />
+        <s:textfield key="user.password"  />
+        <s:submit key="label.submit" />
+
     </s:form>
 
 

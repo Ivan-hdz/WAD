@@ -1,7 +1,10 @@
 package mx.ivan.wad.ProyectoFinal.User;
 
 
-import lombok.Getter;
+import com.opensymphony.xwork2.validator.annotations.EmailValidator;
+import com.opensymphony.xwork2.validator.annotations.RequiredStringValidator;
+import com.opensymphony.xwork2.validator.annotations.Validations;
+import com.opensymphony.xwork2.validator.annotations.ValidatorType;
 import lombok.Setter;
 
 import javax.persistence.*;
@@ -9,27 +12,42 @@ import javax.persistence.*;
 @Entity
 @Table(name = "e_user")
 public class UserEntity {
+
     @Setter
-    @Getter
     @Id
     @GeneratedValue
-    @Column
+    @Column(updatable = false)
     private int id;
 
     @Setter
-    @Getter
-    @Column
+    @Column(updatable = false)
     private String email;
 
     @Setter
-    @Getter
-    @Column
+    @Column(updatable = false)
     private String password;
 
     @Setter
-    @Getter
-    @Column
+    @Column(updatable = false)
     private String name;
 
+    public String getPassword() {
+        return password;
+    }
 
+	@Validations(
+			emails = { @EmailValidator(type = ValidatorType.SIMPLE, fieldName = "user.email", key = "message.error.invalidEmail") },
+			requiredStrings = {@RequiredStringValidator(type = ValidatorType.SIMPLE, fieldName = "user.email", key = "message.error.fieldRequired")}
+	)
+    public String getEmail() {
+        return email;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
 }
