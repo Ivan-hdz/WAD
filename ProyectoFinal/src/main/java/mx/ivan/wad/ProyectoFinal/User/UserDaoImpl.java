@@ -4,9 +4,15 @@ import lombok.Getter;
 import lombok.Setter;
 import mx.ivan.wad.ProyectoFinal.Interfaces.Dao;
 import mx.ivan.wad.ProyectoFinal.User.UserEntity;
+
+import org.hibernate.query.Query;
+
+import com.opensymphony.xwork2.Action;
+
 import org.hibernate.SessionFactory;
 
 import java.util.List;
+
 
 public class UserDaoImpl implements Dao<UserEntity> {
     @Setter
@@ -15,7 +21,7 @@ public class UserDaoImpl implements Dao<UserEntity> {
 
     @Override
     public void create(UserEntity user) {
-        this.getSessionFactory().getCurrentSession().save(user);
+    	this.getSessionFactory().getCurrentSession().save(user);
     }
 
     @Override
@@ -35,4 +41,12 @@ public class UserDaoImpl implements Dao<UserEntity> {
         return this.getSessionFactory().getCurrentSession().find(UserEntity.class, id);
     }
 
-}
+	@Override
+	public UserEntity getByProperty(String property, String condition) {
+		Query<UserEntity> q = this.getSessionFactory().getCurrentSession().createQuery("from UserEntity where :property = :condition", UserEntity.class);
+		q.setParameter(0, property);
+		q.setParameter(1, condition);
+		return (UserEntity) q.uniqueResult();
+	}
+
+}	

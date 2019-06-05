@@ -7,5 +7,6 @@ public interface Service<T>  {
     void delete(int id);
     T get(int id);
     List<T> getAll();
+    T getByProperty(String property, String condition);
 }
 

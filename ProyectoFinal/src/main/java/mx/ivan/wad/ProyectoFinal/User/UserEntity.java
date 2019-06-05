@@ -33,14 +33,14 @@ public class UserEntity {
     private String name;
 
     @Validations(
-			requiredStrings = {@RequiredStringValidator(type = ValidatorType.FIELD, fieldName = "user.password",message = "message.error.fieldRequired" )}
+			requiredStrings = {@RequiredStringValidator(type = ValidatorType.FIELD, fieldName = "user.password",key = "message.error.fieldRequired" )}
 	)
     public String getPassword() {
         return password;
     }
     
     @Validations(
-			requiredStrings = {@RequiredStringValidator(type = ValidatorType.FIELD, fieldName = "user.name",message = "message.error.fieldRequired" )}
+			requiredStrings = {@RequiredStringValidator( type = ValidatorType.FIELD, fieldName = "user.name",key = "message.error.fieldRequired" )}
     )
     public String getName() {
         return name;

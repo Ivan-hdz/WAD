@@ -38,4 +38,10 @@ public class UserServiceImpl implements Service<UserEntity> {
     	return this.userDao.get(id);
     }
 
+	@Override
+	public UserEntity getByProperty(String property, String condition) {
+		
+		return this.userDao.getByProperty(property, condition);
+	}
+
 }

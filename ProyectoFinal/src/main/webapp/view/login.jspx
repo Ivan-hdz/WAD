@@ -21,6 +21,10 @@
     		
     		<s:submit key="label.submit" name="" />
     	</s:form>
+    	
+    	<a href="${pageContext.request.contextPath}/home">
+			<s:submit type="button" key="label.goHome" />
+		</a>
     </body>
     </html>
 </jsp:root>

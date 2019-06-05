@@ -94,18 +94,22 @@
             			 class="mx.ivan.wad.ProyectoFinal.Interceptors.ValidateSessionInterceptor" />
             <interceptor-stack name="myDefaultStack">
             	<interceptor-ref name="charsetInterceptor" />
+            	<interceptor-ref name="store">
+            		<param name="type">STORE</param>
+            	</interceptor-ref>
                 <interceptor-ref name="defaultStack"/>
             </interceptor-stack>
       
         </interceptors>
 
 		<default-interceptor-ref name="myDefaultStack"></default-interceptor-ref>
-        <action name="signup"  >
+		
+        <action name="signup" class="userAction" >
         	<result>/view/signup.jspx</result>
         </action>
-        <action name="doSignup" method="create" class="userAction">
+        <action name="doSignup" method="signup" class="userAction">
             <result name="success" >/view/home.jspx</result>
-            <result name="input, error" type="redirectAction">/signup</result>
+            <result name="input, error" >/view/signup.jspx</result>
         </action>
         
         <action name="login">
@@ -113,10 +117,12 @@
         </action>
         <action name="doLogin" method="login" class="userAction">
         	<result name="success" >/view/dashboard.jspx</result>
-        	<result name="input, error" >/login</result>
+        	<result name="input, error" type="redirectAction" >login</result>
         </action>
-        
-        <action name="*">
+        <action name="home" class="userAction">
+            <result>/view/home.jspx</result>
+        </action>
+        <action name="*" class="userAction">
             <result>/view/home.jspx</result>
         </action>
         

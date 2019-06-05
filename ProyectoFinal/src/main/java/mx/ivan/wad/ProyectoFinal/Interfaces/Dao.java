@@ -7,4 +7,6 @@ public interface Dao<T> {
     void delete(int id);
     List<T> getAll();
     T get(int id);
+    T getByProperty(String property, String condition);
+
 }

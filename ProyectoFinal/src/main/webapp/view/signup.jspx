@@ -17,25 +17,22 @@
 <title>Register</title>
 </head>
 <body>
-	<H1><s:text name="title.login" /></H1>
+	<H1><s:text name="title.signup" /></H1>
 	
-    	
-    <s:form method="post" action="doSignUp"  validate="true" >
-		<s:fielderror />
+    <s:form method="post" action="doSignup"  validation="true" >
 		
-        <s:textfield  key="user.name"/>
-        <s:fielderror fieldName="user.name" />
+        <s:textfield errorPosition="bottom"  key="user.name"/>
         
-        <s:textfield key="user.email" name="user.email" />
-        <s:fielderror fieldName="user.email" />
+        <s:textfield errorPosition="bottom"  key="user.email"/>
       
-        <s:textfield key="user.password"  />
-        <s:fielderror fieldName="user.password" />
+        <s:textfield errorPosition="bottom"  key="user.password"  />
         
         <s:submit key="label.submit" name="" />
 
     </s:form>
-
+    <a href="${pageContext.request.contextPath}">
+		<s:submit type="button" key="label.goHome" />
+	</a>
 </body>
 </html>
 </jsp:root>

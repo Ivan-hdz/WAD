@@ -12,67 +12,73 @@ import mx.ivan.wad.ProyectoFinal.User.UserEntity;
 
 import java.util.List;
 
-public class UserAction extends ActionSupport implements Preparable, ModelDriven<UserEntity> {
-    @Setter
-    @Getter
-    private List<UserEntity> users;
-    
-    @Getter
-    private Integer idSel;
+public class UserAction extends ActionSupport implements Preparable {
 
-    @Setter
-    @Getter
-    private String message;
+ 
+    private Integer idSel;
     
-    @Setter
-    @Getter
     private UserEntity user;
 
-    @Setter
-    @Getter
     private Service<UserEntity> userService;
     
-    
-
-    @Override
-    public void prepare() throws Exception {
-        user = null;
+    public void setUser(UserEntity u) {
+    	user = u;
     }
     
     @VisitorFieldValidator
-    public String create() {
-        userService.create(user);
-        return SUCCESS;
+    public UserEntity getUser() {
+    	return user;
     }
     
-    
-    public String list() {
-        users = userService.getAll();
-        return SUCCESS;
+    public void setUserService(Service<UserEntity> us) {
+    	userService = us;
+    }
+    public Service<UserEntity> getUserService() {
+    	return userService;
     }
     
-    public String delete() {
-        userService.delete(user.getId());
-        return SUCCESS;
-    }
-    
-    @VisitorFieldValidator
     public void setIdSe(int id) {
     	this.idSel = id;
     	if(idSel != null) {
     		user = userService.get(id);
     	}
     }
-    @Override
-    @VisitorFieldValidator
-    public UserEntity getModel() {
-        return user;
-    }
-   
-    @VisitorFieldValidator
 	public Integer getIdSel() {
 		return idSel;
 	}
+    
+
+    
+    
+    @Override
+    public void prepare() throws Exception {
+        user = null;
+    }
+    
+
+    public String signup() {
+        userService.create(user);
+        addActionMessage(getText("message.info.accountCreated"));
+        return SUCCESS;
+    }
+    
+    public String login() {
+    	
+    	return SUCCESS;
+    }
+    
+    
+    public String delete() {
+        userService.delete(user.getId());
+        return SUCCESS;
+    }
+    
+    
+    
+    
+
+
+
     
     
 }

@@ -10,6 +10,7 @@
         <title><s:text name="title.home" /></title>
     </head>
     <body>
+    	<s:actionmessage />
     	<a href="view/login.jspx">
     		<s:submit key="label.login" />
     	</a>
