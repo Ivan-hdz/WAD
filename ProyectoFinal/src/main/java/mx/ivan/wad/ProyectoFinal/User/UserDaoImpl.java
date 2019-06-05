@@ -43,10 +43,10 @@ public class UserDaoImpl implements Dao<UserEntity> {
 
 	@Override
 	public UserEntity getByProperty(String property, String condition) {
-		Query<UserEntity> q = this.getSessionFactory().getCurrentSession().createQuery("from UserEntity where :property = :condition", UserEntity.class);
-		q.setParameter(0, property);
-		q.setParameter(1, condition);
+		Query<UserEntity> q = this.getSessionFactory().getCurrentSession().createQuery("from UserEntity where " + property + " = :condition", UserEntity.class);
+//		q.setParameter("property", property);
+		q.setParameter("condition", condition);
 		return (UserEntity) q.uniqueResult();
 	}
-
+	
 }	

@@ -38,6 +38,7 @@ public class UserServiceImpl implements Service<UserEntity> {
     	return this.userDao.get(id);
     }
 
+    @Transactional
 	@Override
 	public UserEntity getByProperty(String property, String condition) {
 		

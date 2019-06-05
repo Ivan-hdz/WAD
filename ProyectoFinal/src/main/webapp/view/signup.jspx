@@ -14,7 +14,8 @@
 	<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Register</title>
+<title><s:text name="title.signup"></s:text></title>
+<s:head />
 </head>
 <body>
 	<H1><s:text name="title.signup" /></H1>
@@ -25,7 +26,7 @@
         
         <s:textfield errorPosition="bottom"  key="user.email"/>
       
-        <s:textfield errorPosition="bottom"  key="user.password"  />
+        <s:password errorPosition="bottom"  key="user.password"  />
         
         <s:submit key="label.submit" name="" />
 

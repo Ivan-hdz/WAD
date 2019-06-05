@@ -1,5 +1,6 @@
 package mx.ivan.wad.ProyectoFinal.Interceptors;
 
+import java.util.Map;
 import java.util.logging.Logger;
 
 import javax.servlet.ServletContext;
@@ -10,6 +11,7 @@ import org.apache.struts2.StrutsStatics;
 import com.opensymphony.xwork2.Action;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionInvocation;
+import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.interceptor.Interceptor;
 import com.opensymphony.xwork2.interceptor.ValidationAware;
 
@@ -33,12 +35,24 @@ public class ValidateSessionInterceptor implements Interceptor {
 	@Override
 	public String intercept(ActionInvocation invocation) throws Exception {
 		logger.info("Validating session");
-		HttpSession session = (HttpSession) invocation.getInvocationContext().getSession();
-		if(session.getAttribute(SESSION_VALID_KEY) != null)
+		Boolean loggedIn = false;
+		Map<String, Object> session = invocation.getInvocationContext().getSession();
+		try {
+			ActionSupport as = (ActionSupport)invocation.getAction();
+			loggedIn = (boolean)session.get(as.getText("session.loggedIn"));
+			
+		} catch(Exception e) {
+			logger.warning(e.getMessage());
+			loggedIn = false;
+			return Action.ERROR;
+		}
+		if(loggedIn)
+		{
 			return invocation.invoke();
+		}
 		else {
 			addActionError(invocation, "${getText('message.error.invalidSession')}");
-			return Action.ERROR;
+			return Action.INPUT;
 		}
 		
 		

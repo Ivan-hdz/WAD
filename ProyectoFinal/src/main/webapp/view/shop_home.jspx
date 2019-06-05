@@ -10,7 +10,12 @@
         <title><s:text name="title.home" /></title>
     </head>
     <body>
-    
+    	<a href="${pageContext.request.contextPath}/doLogout">
+    		<s:submit key="label.logout" />
+    	</a>
+    	<s:actionerror />
+    	<s:actionmessage />
+    	<h1>Shop-Home works</h1>
     </body>
     </html>
 </jsp:root>

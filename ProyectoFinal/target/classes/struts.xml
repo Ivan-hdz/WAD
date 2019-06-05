@@ -81,51 +81,69 @@
 			labels/message/message
 			labels/message/message_es
 			labels/labels/label
-			labels/labels/label_es
+			labels/labels/label_es,
+			enviroment/session_keys/session
 	"/>
 
-	
-    <package name="default" namespace="" extends="struts-default">
-
-        <interceptors>
+	<package name="my-interceptors" extends="struts-default" >
+	<interceptors>
             <interceptor name="charsetInterceptor"
                          class="mx.ivan.wad.ProyectoFinal.Interceptors.CharsetInterceptor"/>
             <interceptor name="validateSessionInterceptor"
             			 class="mx.ivan.wad.ProyectoFinal.Interceptors.ValidateSessionInterceptor" />
+            			 
             <interceptor-stack name="myDefaultStack">
             	<interceptor-ref name="charsetInterceptor" />
+        
             	<interceptor-ref name="store">
-            		<param name="type">STORE</param>
-            	</interceptor-ref>
-                <interceptor-ref name="defaultStack"/>
-            </interceptor-stack>
-      
-        </interceptors>
+            		<param name="operationMode">AUTOMATIC</param>
+           		</interceptor-ref>
+       	
+       	        <interceptor-ref name="defaultStack"/>
+    	    </interceptor-stack>
+    	</interceptors>
+    	<default-interceptor-ref name="myDefaultStack"></default-interceptor-ref>
+	</package>
+	
+    <package name="accounts" namespace="" extends="my-interceptors">
 
-		<default-interceptor-ref name="myDefaultStack"></default-interceptor-ref>
 		
         <action name="signup" class="userAction" >
-        	<result>/view/signup.jspx</result>
+        	<result name="success, input" >/view/signup.jspx</result>
         </action>
         <action name="doSignup" method="signup" class="userAction">
-            <result name="success" >/view/home.jspx</result>
-            <result name="input, error" >/view/signup.jspx</result>
+            <result name="success" type="redirectAction">home</result>
+            <result name="input, error" type="redirectAction" >signup</result>
         </action>
         
         <action name="login">
-        	<result>/view/login.jspx</result>
+        	<result name="success, input, error">/view/login.jspx</result>
         </action>
         <action name="doLogin" method="login" class="userAction">
-        	<result name="success" >/view/dashboard.jspx</result>
+        	<result name="success" type="redirectAction" >shop/home</result>
         	<result name="input, error" type="redirectAction" >login</result>
         </action>
-        <action name="home" class="userAction">
-            <result>/view/home.jspx</result>
-        </action>
-        <action name="*" class="userAction">
-            <result>/view/home.jspx</result>
+        
+        <action name="doLogout" method="logout" class="userAction">
+        	<result name="success" type="redirectAction" >home</result>
         </action>
         
+        <action name="home" class="userAction">
+            <result name="success, input">/view/home.jspx</result>
+        </action>
+        <action name="*" class="userAction">
+            <result type="redirectAction" >home</result>
+        </action>
+        
+    </package>
+    <package name="shop" namespace="/shop" extends="my-interceptors">
+    	
+    	<action name="home" class="userAction">
+            <result name="success, input">/view/shop_home.jspx</result>
+        </action>
+        <action name="*" class="userAction">
+            <result type="redirectAction" >shop/home</result>
+        </action>
     </package>
     
  

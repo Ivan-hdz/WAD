@@ -10,13 +10,14 @@
         <title><s:text name="title.home" /></title>
     </head>
     <body>
+    	<s:actionerror />
+    	<s:actionmessage />
     	<s:form method="POST" action="doLogin">
-    		<s:fielderror/>
     	
     		<s:textfield key="user.email" />
     		<s:fielderror fieldName="user.email" />
     		
-    		<s:textfield key="user.password" />
+    		<s:password key="user.password" />
     		<s:fielderror fieldName="user.password" />
     		
     		<s:submit key="label.submit" name="" />

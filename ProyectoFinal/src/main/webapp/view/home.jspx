@@ -11,10 +11,10 @@
     </head>
     <body>
     	<s:actionmessage />
-    	<a href="view/login.jspx">
+    	<a  href="${pageContext.request.contextPath}/login">
     		<s:submit key="label.login" />
     	</a>
-    	<a href="signup">
+    	<a href="${pageContext.request.contextPath}/signup">
     		<s:submit key="label.signup" />
     	</a>
     </body>
