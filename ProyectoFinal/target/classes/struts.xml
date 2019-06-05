@@ -1,14 +1,76 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!DOCTYPE struts PUBLIC
-        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
         "http://struts.apache.org/dtds/struts-2.5.dtd">
 
 <struts>
-    <constant name="struts.i18n.encoding" value="UTF-8"/>
-    <constant name="struts.devMode" value="true"/>
+
     <constant name="struts.enable.SlashesInActionNames" value="true"/>
-    <constant name="struts.enable.DynamicMethodInvocation" value="false" />
+    <constant name="" value=""></constant>
+    <!-- Excluir una url en Struts2 -->
+	<!-- <constant name="struts.action.excludePattern" value="/OL4JSFProxy/wms*" 
+		/> -->
+	<constant name="struts.action.excludePattern"
+		value="/services/.*,/wsServer*,/admision/procesar-pago" />
+
+	<constant name="struts.i18n.encoding" value="UTF-8" />
+	<!-- Delega el trabajo de creación de objetos a Spring -->
+	<constant name="struts.objectFactory"
+		value="org.apache.struts2.spring.StrutsSpringObjectFactory" />
+
+	<!-- Quita la restricción de tamaño máximo de petición para el servidor 
+		de aplicaciones para el caso de envío de archivos, delegando el trabajo al 
+		interceptor de Struts -->
+	<constant name="struts.multipart.maxSize" value="-1" />
+
+	<!-- struts2 busca paquetes que terminen, en su nombre, con las siguientes 
+		cadenas en busca de acciones -->
+	<constant name="struts.convention.package.locators"
+		value="action" />
+
+	<!-- Mapea todas las acciones encontradas aun y cuando no exista la anotacion 
+		correspondiente -->
+	<constant name="struts.convention.action.mapAllMatches"
+		value="true" />
+
+	<!-- sirve para que los botones hagan diferentes accciones -->
+	<constant name="struts.mapper.action.prefix.enabled"
+		value="true" />
+
+
+	<!-- Permite visualizar el modo de desarrollo de struts2 -->
+	<constant name="struts.devMode" value="true" />
+
+
+	<!-- Permite el mapeo de otros metodos a ejecutar dentro de un action desde 
+		la vista -->
+	<constant name="struts.enable.DynamicMethodInvocation"
+		value="true" />
+
+
+	<!-- Permite el uso de métodos estáticos por medio de OGNL -->
+	<constant name="struts.ognl.allowStaticMethodAccess"
+		value="true" />
+
+	<constant name="struts.mapper.idParameterName" value="idSel" />
+
+	<!-- Permite el mapeo de las extensiones siguientes a actions -->
+	<constant name="struts.action.extension" value="," />
+
+
+	<!-- Tema para usar a los elementos renderizados a partir de las etiquetas 
+		de Struts2 -->
+	<constant name="struts.ui.theme" value="xhtml" />
+	<constant name="struts.configuration.xml.reload" value="true" />
+	<constant name="struts.i18n.reload" value="true" />
+
+
+	<constant name="struts.xwork.chaining.copyFieldErrors"
+		value="false" />
+    
+    
+    
 <!--     labels constants -->
     <constant name="struts.custom.i18n.resources" 
     	value="
@@ -28,31 +90,38 @@
         <interceptors>
             <interceptor name="charsetInterceptor"
                          class="mx.ivan.wad.ProyectoFinal.Interceptors.CharsetInterceptor"/>
-            
-            <interceptor-stack name="charsetStack">
+            <interceptor name="validateSessionInterceptor"
+            			 class="mx.ivan.wad.ProyectoFinal.Interceptors.ValidateSessionInterceptor" />
+            <interceptor-stack name="myDefaultStack">
             	<interceptor-ref name="charsetInterceptor" />
                 <interceptor-ref name="defaultStack"/>
             </interceptor-stack>
-
+      
         </interceptors>
 
+		<default-interceptor-ref name="myDefaultStack"></default-interceptor-ref>
+        <action name="signup"  >
+        	<result>/view/signup.jspx</result>
+        </action>
+        <action name="doSignup" method="create" class="userAction">
+            <result name="success" >/view/home.jspx</result>
+            <result name="input, error" type="redirectAction">/signup</result>
+        </action>
         
-        <action name="create" method="create" class="userController">
-            <result name="success" type="redirect">/list</result>
-            <result name="input, error" type="redirect">/list</result>
+        <action name="login">
+        	<result>/view/login.jspx</result>
         </action>
-        <action name="delete/*" method="delete" class="userController">
-            <param name="user.id">{1}</param>
-            <result type="redirect">/list</result>
+        <action name="doLogin" method="login" class="userAction">
+        	<result name="success" >/view/dashboard.jspx</result>
+        	<result name="input, error" >/login</result>
         </action>
-        <action name="list" method="list" class="userController">
-            <interceptor-ref name="charsetStack"/>
-            <result>/view/login.jspx</result>
+        
+        <action name="*">
+            <result>/view/home.jspx</result>
         </action>
-        <action name="*" method="list" class="userController">
-            <interceptor-ref name="charsetStack"/>
-            <result>/view/login.jspx</result>
-        </action>
+        
     </package>
+    
+ 
 
 </struts>

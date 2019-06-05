@@ -10,17 +10,12 @@
         <title><s:text name="title.home" /></title>
     </head>
     <body>
-    	<s:form method="POST" action="doLogin">
-    		<s:fielderror/>
-    	
-    		<s:textfield key="user.email" />
-    		<s:fielderror fieldName="user.email" />
-    		
-    		<s:textfield key="user.password" />
-    		<s:fielderror fieldName="user.password" />
-    		
-    		<s:submit key="label.submit" name="" />
-    	</s:form>
+    	<a href="view/login.jspx">
+    		<s:submit key="label.login" />
+    	</a>
+    	<a href="signup">
+    		<s:submit key="label.signup" />
+    	</a>
     </body>
     </html>
 </jsp:root>

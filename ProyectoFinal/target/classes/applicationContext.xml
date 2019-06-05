@@ -13,16 +13,16 @@
 
     <!-- This bean has been referred fron struts.xml file; So type it correctly; -->
     <!-- Make scope prototype; This is really important. -->
-    <bean name="userController" class="mx.ivan.wad.ProyectoFinal.User.classes.UserController" scope="prototype">
+    <bean name="userAction" class="mx.ivan.wad.ProyectoFinal.User.UserAction" scope="prototype">
         <property name="userService" ref="userService"/>
     </bean>
 
     <!-- These beans are injected automatically by spring context -->
-    <bean id="userDao" class="mx.ivan.wad.ProyectoFinal.User.classes.UserDaoImpl">
+    <bean id="userDao" class="mx.ivan.wad.ProyectoFinal.User.UserDaoImpl">
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
 
-    <bean id="userService" class="mx.ivan.wad.ProyectoFinal.User.classes.UserServiceImpl">
+    <bean id="userService" class="mx.ivan.wad.ProyectoFinal.User.UserServiceImpl">
         <property name="userDao" ref="userDao"/>
     </bean>
 

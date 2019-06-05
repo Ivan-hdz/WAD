@@ -1,7 +1,8 @@
-package mx.ivan.wad.ProyectoFinal.User;
+                                           package mx.ivan.wad.ProyectoFinal.User;
 
 
 import com.opensymphony.xwork2.validator.annotations.EmailValidator;
+import com.opensymphony.xwork2.validator.annotations.RequiredFieldValidator;
 import com.opensymphony.xwork2.validator.annotations.RequiredStringValidator;
 import com.opensymphony.xwork2.validator.annotations.Validations;
 import com.opensymphony.xwork2.validator.annotations.ValidatorType;
@@ -13,31 +14,45 @@ import javax.persistence.*;
 @Table(name = "e_user")
 public class UserEntity {
 
-    @Setter
+    
     @Id
     @GeneratedValue
     @Column(updatable = false)
     private int id;
 
-    @Setter
+    
     @Column(updatable = false)
     private String email;
 
-    @Setter
+    
     @Column(updatable = false)
     private String password;
 
-    @Setter
+    
     @Column(updatable = false)
     private String name;
 
+    @Validations(
+			requiredStrings = {@RequiredStringValidator(type = ValidatorType.FIELD, fieldName = "user.password",message = "message.error.fieldRequired" )}
+	)
     public String getPassword() {
         return password;
     }
+    
+    @Validations(
+			requiredStrings = {@RequiredStringValidator(type = ValidatorType.FIELD, fieldName = "user.name",message = "message.error.fieldRequired" )}
+    )
+    public String getName() {
+        return name;
+    }
 
-	@Validations(
-			emails = { @EmailValidator(type = ValidatorType.SIMPLE, fieldName = "user.email", key = "message.error.invalidEmail") },
-			requiredStrings = {@RequiredStringValidator(type = ValidatorType.SIMPLE, fieldName = "user.email", key = "message.error.fieldRequired")}
+    @Validations(
+			emails = { 
+						@EmailValidator(type = ValidatorType.FIELD,  fieldName = "user.email", key = "message.error.invalidEmail")
+					},
+			requiredStrings = {
+						@RequiredStringValidator(type = ValidatorType.FIELD, fieldName = "user.email", key = "message.error.fieldRequired")
+					}
 	)
     public String getEmail() {
         return email;
@@ -46,8 +61,19 @@ public class UserEntity {
     public int getId() {
         return id;
     }
-
-    public String getName() {
-        return name;
+   
+    public void setName(String name) {
+    	this.name = name;
     }
+
+    public void setEmail(String email) {
+    	this.email = email;
+    }
+
+    public void setPassword(String password) {
+    	this.password = password;
+    }
+    
+    
+    
 }
