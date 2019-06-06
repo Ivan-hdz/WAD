@@ -13,11 +13,11 @@
 
 <!--     User -->
     <bean name="userAction" class="mx.ivan.wad.ProyectoFinal.User.UserAction" scope="prototype">
-        <property name="userService" ref="userService"/>
+        <property name="service" ref="userService"/>
     </bean>
 
 	<bean id="userService" class="mx.ivan.wad.ProyectoFinal.User.UserServiceImpl">
-        <property name="userDao" ref="userDao"/>
+        <property name="dao" ref="userDao"/>
     </bean>
 
     <bean id="userDao" class="mx.ivan.wad.ProyectoFinal.User.UserDaoImpl">
@@ -26,17 +26,29 @@
     
 <!--     Item -->
     <bean name="itemAction" class="mx.ivan.wad.ProyectoFinal.Item.ItemAction" scope="prototype">
-        <property name="itemService" ref="itemService"/>
+        <property name="service" ref="itemService"/>
     </bean>
 
 	<bean id="itemService" class="mx.ivan.wad.ProyectoFinal.Item.ItemService">
-        <property name="itemDao" ref="itemDao"/>
+        <property name="dao" ref="itemDao"/>
     </bean>
 
     <bean id="itemDao" class="mx.ivan.wad.ProyectoFinal.Item.ItemDao">
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
+    
+<!--     Stock -->
+	<bean name="stockAction" class="mx.ivan.wad.ProyectoFinal.Stock.StockAction" scope="prototype">
+        <property name="service" ref="stockService"/>
+    </bean>
 
+	<bean id="stockService" class="mx.ivan.wad.ProyectoFinal.Stock.StockService">
+        <property name="dao" ref="stockDao"/>
+    </bean>
+
+    <bean id="stockDao" class="mx.ivan.wad.ProyectoFinal.Stock.StockDao">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
     
 
     <context:property-placeholder location="classpath:properties/jdbc.properties, classpath:properties/hibernate.properties"/>

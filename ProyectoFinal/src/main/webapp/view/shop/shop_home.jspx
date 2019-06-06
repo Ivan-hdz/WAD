@@ -7,16 +7,19 @@
     <jsp:directive.page  contentType="text/html; charset=UTF-8"/>
     <html>
     <head>
-        <title><s:text name="title.home" /></title>
+        <title><s:text name="title.shop" /></title>
     </head>
     <body>
-    	<a href="${pageContext.request.contextPath}/doLogout">
+    	<a href="${pageContext.request.contextPath}/do_logout">
     		<s:submit key="label.logout" />
     	</a>
+    	<a href="${pageContext.request.contextPath}/shop/show_cart">
+    		<s:submit key="label.showCart" />
+    	</a>
     	
+    	<h1><s:text name="title.shop" /> </h1>
     	<s:actionerror />
     	<s:actionmessage />
-    	<h1>Shop-Home works</h1>
     	<c:if test="${!empty items }">
     		<div style="flex-direction: row; display: flex; flex-wrap: wrap">
     			<c:forEach items="${items}" var="it" >
@@ -28,10 +31,10 @@
 	    					<h2>${it.name} </h2>
 	    					<h3>$ ${it.price }</h3>
 	    					<h5>${it.description }</h5>
-	    					<s:form action="addToCart" method="POST">
-								<s:hidden value="%{it.id }" name="item.id" />
-							<s:submit key="label.addToCart" name=""></s:submit>
-						</s:form>
+	    					 <s:form action="add_to_cart" namespace="/shop" method="POST">
+	    					 <input type="hidden" name="item.id" value="${it.id }" />
+	    					 <s:submit type="button" key="label.addToCart" name=""></s:submit>
+	    					 </s:form>
 	    				</div>
 	    			</div>
 	    		</c:forEach>

@@ -7,5 +7,6 @@
     <session-factory>
         <mapping class="mx.ivan.wad.ProyectoFinal.User.UserEntity" />
         <mapping class="mx.ivan.wad.ProyectoFinal.Item.ItemEntity" />
+       	<mapping class="mx.ivan.wad.ProyectoFinal.Stock.StockEntity" />
     </session-factory>
 </hibernate-configuration>

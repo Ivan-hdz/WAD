@@ -1,15 +1,9 @@
 package mx.ivan.wad.ProyectoFinal.Item;
 
-import com.opensymphony.xwork2.validator.annotations.EmailValidator;
-import com.opensymphony.xwork2.validator.annotations.RequiredStringValidator;
-import com.opensymphony.xwork2.validator.annotations.Validations;
-import com.opensymphony.xwork2.validator.annotations.ValidatorType;
-
-
 import javax.persistence.*;
 
 @Entity
-@Table(name = "c_stock")
+@Table(name = "c_item")
 public class ItemEntity {
 	
 	@Id
@@ -21,8 +15,6 @@ public class ItemEntity {
 	private String name;
 	@Column(length = 2500, nullable = false, updatable = false, insertable = false)
 	private String description;
-	@Column(length = 6, nullable = false, updatable = true, insertable = false)
-	private Integer quantity;
 	@Column(length = 6, nullable = false, updatable = false, insertable = false)
 	private Float price;
 	@Column(name= "img_url", length = 1500, updatable = false, insertable = false)
@@ -44,9 +36,6 @@ public class ItemEntity {
 		this.description = description;
 	}
 	
-	public void setQuantity(Integer quantity) {
-		this.quantity = quantity;
-	}
 	
 	public void setPrice(Float price) {
 		this.price = price;
@@ -57,8 +46,6 @@ public class ItemEntity {
 	public String getName() {return this.name; }
 	
 	public String getDescription() { return this.description; }
-	
-	public Integer getQuantity() { return this.quantity; }
 	
 	public Float getPrice() { return this.price; }
 	

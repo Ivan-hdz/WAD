@@ -4,6 +4,7 @@ import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.Preparable;
 import com.opensymphony.xwork2.validator.annotations.VisitorFieldValidator;
 
+import mx.ivan.wad.ProyectoFinal.Interfaces.ActionController;
 import mx.ivan.wad.ProyectoFinal.Interfaces.Service;
 import mx.ivan.wad.ProyectoFinal.User.UserEntity;
 
@@ -14,7 +15,7 @@ import java.util.logging.Logger;
 import org.apache.struts2.interceptor.SessionAware;
 import org.apache.struts2.interceptor.validation.SkipValidation;
 
-public class UserAction extends ActionSupport implements Preparable, SessionAware {
+public class UserAction extends ActionSupport implements ActionController<UserEntity>, Preparable, SessionAware {
 
 	private Logger logger = Logger.getLogger(UserAction.class.getName());
     
@@ -33,12 +34,6 @@ public class UserAction extends ActionSupport implements Preparable, SessionAwar
     	return user;
     }
     
-    public void setUserService(Service<UserEntity> us) {
-    	userService = us;
-    }
-    public Service<UserEntity> getUserService() {
-    	return userService;
-    }
     
     
     @Override
@@ -84,6 +79,18 @@ public class UserAction extends ActionSupport implements Preparable, SessionAwar
 	public void setSession(Map<String, Object> session) {
 		// TODO Auto-generated method stub
 		this.session = session;
+	}
+
+	@Override
+	public Service<UserEntity> getService() {
+		// TODO Auto-generated method stub
+		return this.userService;
+	}
+
+	@Override
+	public void setService(Service<UserEntity> service) {
+		// TODO Auto-generated method stub
+		this.userService = service;
 	}
     
     

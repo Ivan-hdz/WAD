@@ -20,7 +20,7 @@
 <body>
 	<H1><s:text name="title.signup" /></H1>
 	
-    <s:form method="post" action="doSignup"  validation="true" >
+    <s:form method="post" action="do_signup"  validation="true" >
 		
         <s:textfield errorPosition="bottom"  key="user.name"/>
         

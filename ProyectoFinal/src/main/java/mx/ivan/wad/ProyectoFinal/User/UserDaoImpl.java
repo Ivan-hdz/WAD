@@ -15,8 +15,7 @@ import java.util.List;
 
 
 public class UserDaoImpl implements Dao<UserEntity> {
-    @Setter
-    @Getter
+    
     private SessionFactory sessionFactory;
 
     @Override
@@ -47,6 +46,18 @@ public class UserDaoImpl implements Dao<UserEntity> {
 //		q.setParameter("property", property);
 		q.setParameter("condition", condition);
 		return (UserEntity) q.uniqueResult();
+	}
+
+	@Override
+	public SessionFactory getSessionFactory() {
+		// TODO Auto-generated method stub
+		return sessionFactory;
+	}
+
+	@Override
+	public void setSessionFactory(SessionFactory sessionFactory) {
+		// TODO Auto-generated method stub
+		this.sessionFactory = sessionFactory;
 	}
 	
 }	

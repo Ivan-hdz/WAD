@@ -114,7 +114,7 @@
         <action name="signup" class="userAction" >
         	<result name="success, input" >/view/signup.jspx</result>
         </action>
-        <action name="doSignup" method="signup" class="userAction">
+        <action name="do_signup" method="signup" class="userAction">
             <result name="success" type="redirectAction">home</result>
             <result name="input, error" type="redirectAction" >signup</result>
         </action>
@@ -122,17 +122,20 @@
         <action name="login">
         	<result name="success, input, error">/view/login.jspx</result>
         </action>
-        <action name="doLogin" method="login" class="userAction">
+        <action name="do_login" method="login" class="userAction">
         	<result name="success" type="redirectAction" >shop/home</result>
         	<result name="input, error" type="redirectAction" >login</result>
         </action>
         
-        <action name="doLogout" method="logout" class="userAction">
+        <action name="do_logout" method="logout" class="userAction">
         	<result name="success" type="redirectAction" >home</result>
         </action>
         
         <action name="home" class="userAction">
             <result name="success, input">/view/home.jspx</result>
+        </action>
+        <action name="*" >
+        	<result type="redirectAction">home</result>
         </action>
         
     </package>
@@ -144,9 +147,19 @@
     			<interceptor-ref name="defaultStack"></interceptor-ref>
     		</interceptor-stack>
     	</interceptors>
+    	
     	<default-interceptor-ref name="shop-default-stack"></default-interceptor-ref>
-    	<action name="addToCart" class="itemAction" method="addToCart" >
+    	
+    	<action name="add_to_cart" class="itemAction" method="addToCart" >
     		<result name="success, input" type="redirectAction">home</result>
+    	</action>
+    	
+    	<action name="remove_from_cart" class="itemAction" method="removeFromCart">
+    		<result name="success, input" type="redirectAction">show_cart</result>
+    	</action>
+    	
+    	<action name="show_cart" class="itemAction"  method="showCart">
+    		<result name="success">/view/shop/shop_cart.jspx</result>
     	</action>
     	
     	<action name="home" class="itemAction" method="getAll">

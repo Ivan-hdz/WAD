@@ -12,7 +12,7 @@
     <body>
     	<s:actionerror />
     	<s:actionmessage />
-    	<s:form method="POST" action="doLogin">
+    	<s:form method="POST" action="do_login">
     	
     		<s:textfield key="user.email" />
     		

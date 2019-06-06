@@ -10,39 +10,20 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 public class UserServiceImpl implements Service<UserEntity> {
-    @Setter
-    @Getter
+    
     private Dao<UserEntity> userDao;
 
-    @Transactional
-    @Override
-    public void create(UserEntity user) {
-        this.userDao.create(user);
-    }
 
-    @Transactional
-    @Override
-    public void delete(int userId) {
-        this.userDao.delete(userId);
-    }
-
-    @Transactional
-    @Override
-    public List<UserEntity> getAll() {
-        return this.userDao.getAll();
-    }
-    
-    @Transactional
-    @Override
-    public UserEntity get(int id) {
-    	return this.userDao.get(id);
-    }
-
-    @Transactional
 	@Override
-	public UserEntity getByProperty(String property, String condition) {
-		
-		return this.userDao.getByProperty(property, condition);
+	public Dao<UserEntity> getDao() {
+		// TODO Auto-generated method stub
+		return userDao;
+	}
+
+	@Override
+	public void setDao(Dao<UserEntity> dao) {
+		// TODO Auto-generated method stub
+		userDao = dao;
 	}
 
 }

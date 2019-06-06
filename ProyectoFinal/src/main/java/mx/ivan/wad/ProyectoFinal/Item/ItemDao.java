@@ -11,8 +11,7 @@ import mx.ivan.wad.ProyectoFinal.Interfaces.Dao;
 
 public class ItemDao implements Dao<ItemEntity> {
 
-	@Setter
-    @Getter
+
     private SessionFactory sessionFactory;
 		
 	@Override
@@ -48,6 +47,18 @@ public class ItemDao implements Dao<ItemEntity> {
 //		q.setParameter("property", property);
 		q.setParameter("condition", condition);
 		return (ItemEntity) q.uniqueResult();
+	}
+
+	@Override
+	public SessionFactory getSessionFactory() {
+		// TODO Auto-generated method stub
+		return sessionFactory;
+	}
+
+	@Override
+	public void setSessionFactory(SessionFactory sessionFactory) {
+		// TODO Auto-generated method stub
+		this.sessionFactory = sessionFactory;
 	}
 
 }
