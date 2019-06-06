@@ -1,21 +1,15 @@
 package mx.ivan.wad.ProyectoFinal.User;
 
 import com.opensymphony.xwork2.ActionSupport;
-import com.opensymphony.xwork2.ModelDriven;
 import com.opensymphony.xwork2.Preparable;
 import com.opensymphony.xwork2.validator.annotations.VisitorFieldValidator;
 
-import lombok.Getter;
-import lombok.Setter;
 import mx.ivan.wad.ProyectoFinal.Interfaces.Service;
 import mx.ivan.wad.ProyectoFinal.User.UserEntity;
 
-import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
 
-import javax.servlet.ServletContext;
-import javax.servlet.http.HttpSession;
 
 import org.apache.struts2.interceptor.SessionAware;
 import org.apache.struts2.interceptor.validation.SkipValidation;
@@ -23,8 +17,6 @@ import org.apache.struts2.interceptor.validation.SkipValidation;
 public class UserAction extends ActionSupport implements Preparable, SessionAware {
 
 	private Logger logger = Logger.getLogger(UserAction.class.getName());
- 
-    private Integer idSel;
     
     private UserEntity user;
 
@@ -48,18 +40,6 @@ public class UserAction extends ActionSupport implements Preparable, SessionAwar
     	return userService;
     }
     
-    public void setIdSe(int id) {
-    	this.idSel = id;
-    	if(idSel != null) {
-    		user = userService.get(id);
-    	}
-    }
-	public Integer getIdSel() {
-		return idSel;
-	}
-    
-
-    
     
     @Override
     public void prepare() throws Exception {
@@ -78,7 +58,7 @@ public class UserAction extends ActionSupport implements Preparable, SessionAwar
     	UserEntity placeholder = userService.getByProperty("email", user.getEmail());
     	if(placeholder != null) {
     		if(placeholder.getPassword().equals(user.getPassword())) {
-    			session.put(getText("session.isLogged"), true);
+    			session.put(getText("session.loggedIn"), true);
     			session.put(getText("session.currentUser"), placeholder);
     			addActionMessage(getText("message.info.loginSuccess"));
     			return SUCCESS;
@@ -89,7 +69,7 @@ public class UserAction extends ActionSupport implements Preparable, SessionAwar
     }
     
     public String logout() {
-    	session.remove(getText("session.isLogged"));
+    	session.remove(getText("session.loggedIn"));
     	session.remove(getText("session.currentUser"));
     	return SUCCESS;
     }

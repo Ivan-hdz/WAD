@@ -11,6 +11,7 @@
     </head>
     <body>
     	<s:actionmessage />
+    	<s:actionerror />
     	<a  href="${pageContext.request.contextPath}/login">
     		<s:submit key="label.login" />
     	</a>

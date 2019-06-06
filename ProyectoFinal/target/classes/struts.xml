@@ -53,7 +53,7 @@
 	<constant name="struts.ognl.allowStaticMethodAccess"
 		value="true" />
 
-	<constant name="struts.mapper.idParameterName" value="idSel" />
+<!-- 	<constant name="struts.mapper.idParameterName" value="idSel" /> -->
 
 	<!-- Permite el mapeo de las extensiones siguientes a actions -->
 	<constant name="struts.action.extension" value="," />
@@ -69,7 +69,10 @@
 	<constant name="struts.xwork.chaining.copyFieldErrors"
 		value="false" />
     
-    
+<!--      <action name="delete/*" class="editEmployeeAction" method="deleteEmployee"> -->
+<!--             <param name="employee.id">{1}</param> -->
+<!--             <result type="redirect">/list</result> -->
+<!--         </action> -->
     
 <!--     labels constants -->
     <constant name="struts.custom.i18n.resources" 
@@ -131,18 +134,23 @@
         <action name="home" class="userAction">
             <result name="success, input">/view/home.jspx</result>
         </action>
-        <action name="*" class="userAction">
-            <result type="redirectAction" >home</result>
-        </action>
         
     </package>
-    <package name="shop" namespace="/shop" extends="my-interceptors">
+    <package name="shop" namespace="/shop" extends="my-interceptors, struts-default">
+    	<interceptors>
+    		<interceptor-stack name="shop-default-stack">
+    			<interceptor-ref name="myDefaultStack"></interceptor-ref>
+    			<interceptor-ref name="validateSessionInterceptor"></interceptor-ref>
+    			<interceptor-ref name="defaultStack"></interceptor-ref>
+    		</interceptor-stack>
+    	</interceptors>
+    	<default-interceptor-ref name="shop-default-stack"></default-interceptor-ref>
+    	<action name="addToCart" class="itemAction" method="addToCart" >
+    		<result name="success, input" type="redirectAction">home</result>
+    	</action>
     	
-    	<action name="home" class="userAction">
-            <result name="success, input">/view/shop_home.jspx</result>
-        </action>
-        <action name="*" class="userAction">
-            <result type="redirectAction" >shop/home</result>
+    	<action name="home" class="itemAction" method="getAll">
+            <result name="success, input">/view/shop/shop_home.jspx</result>
         </action>
     </package>
     

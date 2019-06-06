@@ -15,10 +15,8 @@
     	<s:form method="POST" action="doLogin">
     	
     		<s:textfield key="user.email" />
-    		<s:fielderror fieldName="user.email" />
     		
     		<s:password key="user.password" />
-    		<s:fielderror fieldName="user.password" />
     		
     		<s:submit key="label.submit" name="" />
     	</s:form>
