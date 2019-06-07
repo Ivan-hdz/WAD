@@ -14,7 +14,7 @@
     		<s:submit key="label.logout" />
     	</a>
     	<a href="${pageContext.request.contextPath}/shop/show_cart">
-    		<s:submit key="label.showCart" />
+    		<s:submit key="label.goCart" />
     	</a>
     	
     	<h1><s:text name="title.shop" /> </h1>

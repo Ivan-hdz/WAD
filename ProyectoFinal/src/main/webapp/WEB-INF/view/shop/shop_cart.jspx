@@ -16,6 +16,10 @@
     	<a href="${pageContext.request.contextPath}/shop/home">
     		<s:submit key="label.goHome" />
     	</a>
+    	<a href="${pageContext.request.contextPath}/shop/checkout">
+    		<s:submit key="title.checkout" />
+    	</a>
+    	
     	
     	<h1> <s:text name="title.cart"></s:text> </h1>
     	<s:actionmessage />

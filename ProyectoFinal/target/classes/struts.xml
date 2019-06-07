@@ -77,15 +77,15 @@
 <!--     labels constants -->
     <constant name="struts.custom.i18n.resources" 
     	value="
-			labels/user/user,
-			labels/user/user_es,
-			labels/title/title,
-			labels/title/title_es
-			labels/message/message
-			labels/message/message_es
-			labels/labels/label
-			labels/labels/label_es,
-			enviroment/session_keys/session
+			values/user/user,
+			values/user/user_es,
+			values/title/title,
+			values/title/title_es,
+			values/message/message,
+			values/message/message_es,
+			values/labels/label,
+			values/labels/label_es,
+			values/session_keys/session
 	"/>
 
 	<package name="my-interceptors" extends="struts-default" >
@@ -112,7 +112,7 @@
 
 		
         <action name="signup" class="userAction" >
-        	<result name="success, input" >/view/signup.jspx</result>
+        	<result name="success, input" >/WEB-INF/view/signup.jspx</result>
         </action>
         <action name="do_signup" method="signup" class="userAction">
             <result name="success" type="redirectAction">home</result>
@@ -120,7 +120,7 @@
         </action>
         
         <action name="login">
-        	<result name="success, input, error">/view/login.jspx</result>
+        	<result name="success, input, error">/WEB-INF/view/login.jspx</result>
         </action>
         <action name="do_login" method="login" class="userAction">
         	<result name="success" type="redirectAction" >shop/home</result>
@@ -132,7 +132,7 @@
         </action>
         
         <action name="home" class="userAction">
-            <result name="success, input">/view/home.jspx</result>
+            <result name="success, input">/WEB-INF/view/home.jspx</result>
         </action>
         <action name="*" >
         	<result type="redirectAction">home</result>
@@ -159,12 +159,21 @@
     	</action>
     	
     	<action name="show_cart" class="itemAction"  method="showCart">
-    		<result name="success">/view/shop/shop_cart.jspx</result>
+    		<result name="success">/WEB-INF/view/shop/shop_cart.jspx</result>
     	</action>
     	
     	<action name="home" class="itemAction" method="getAll">
-            <result name="success, input">/view/shop/shop_home.jspx</result>
+            <result name="success, input">/WEB-INF/view/shop/shop_home.jspx</result>
         </action>
+        
+        <action name="do_checkout" class="stockAction" method="doCheckout">
+    		<result name="success">/WEB-INF/view/shop/shop_checkout.jsp</result>
+    	</action>
+    	
+    	<action name="checkout" class="stockAction">
+    		<result name="success">/WEB-INF/view/shop/shop_checkout.jsp</result>
+    	</action>
+    	
     </package>
     
  

@@ -44,7 +44,7 @@ public class ItemAction extends ActionSupport implements ActionController<ItemEn
 	public ItemEntity getItem() { return this.item; }
 	
 	public String getAll() {
-		this.items = itemService.getAll();
+		this.items = itemService.getAll("ItemEntity");
 		return SUCCESS;
 	}
 	
@@ -61,7 +61,7 @@ public class ItemAction extends ActionSupport implements ActionController<ItemEn
 			try
 			{
 				boolean exists = false;
-				item = itemService.get(item.getId());
+				item = itemService.get(item.getId(), ItemEntity.class);
 				List<StockEntity> cart = (List<StockEntity>) session.get(getText("session.cart")); //Null Pointer Exception
 				if(cart == null) {
 					cart = new ArrayList<StockEntity>();
@@ -110,7 +110,7 @@ public class ItemAction extends ActionSupport implements ActionController<ItemEn
 		if(item != null) {
 			try
 			{
-				item = itemService.get(item.getId());
+				item = itemService.get(item.getId(), ItemEntity.class);
 				List<StockEntity> cart = (List<StockEntity>) session.get(getText("session.cart")); //Null Pointer Exception
 				if(cart == null) {
 					cart = new ArrayList<StockEntity>();

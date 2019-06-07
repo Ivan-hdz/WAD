@@ -10,14 +10,22 @@
         <title><s:text name="title.home" /></title>
     </head>
     <body>
-    	<s:actionmessage />
+    	<h1><s:text name="title.login"></s:text></h1>
     	<s:actionerror />
-    	<a  href="${pageContext.request.contextPath}/login">
-    		<s:submit key="label.login" />
-    	</a>
-    	<a href="${pageContext.request.contextPath}/signup">
-    		<s:submit key="label.signup" />
-    	</a>
+    	<s:actionmessage />
+    	<s:form method="POST" action="do_login">
+    	
+    		<s:textfield key="user.email" />
+    		
+    		<s:password key="user.password" />
+    		
+    		<s:submit cssClass="btn btn-warn"  key="label.submit" name="" />
+    	</s:form>
+    	
+    	<a href="${pageContext.request.contextPath}/home">
+			<s:submit cssClass="btn btn-danger" type="button" key="label.goHome" />
+		</a>
+
     </body>
     </html>
 </jsp:root>

@@ -1,14 +1,22 @@
 package mx.ivan.wad.ProyectoFinal.Stock;
 
+
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.Preparable;
 
 import mx.ivan.wad.ProyectoFinal.Interfaces.ActionController;
 import mx.ivan.wad.ProyectoFinal.Interfaces.Service;
 
+
 public class StockAction extends ActionSupport implements ActionController<StockEntity>, Preparable {
 
 	private Service<StockEntity> stockService;
+	
+	public String doCheckout() {
+		
+		addActionMessage("doCheckOut");
+		return SUCCESS;
+	}
 	
 	@Override
 	public void prepare() throws Exception {
