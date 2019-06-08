@@ -10,22 +10,10 @@
         <title><s:text name="title.cart" /></title>
     </head>
     <body>
-    	<a  href="${pageContext.request.contextPath}/do_logout">
-    		<s:submit key="label.logout" />
-    	</a>
-    	<a href="${pageContext.request.contextPath}/shop/home">
-    		<s:submit key="label.goHome" />
-    	</a>
-    	<a href="${pageContext.request.contextPath}/shop/cart">
-    		<s:submit key="label.goCart" />
-    	</a>
-    	
-    	<h1>Checkout works</h1>
-    	<s:actionmessage />
-    	<s:actionerror />
-    	<a href="${pageContext.request.contextPath}/shop/do_checkout">
+    	<h1><s:text name="title.checkout"></s:text></h1>
+    	<!--  a href="${pageContext.request.contextPath}/shop/do_checkout">
     		<s:submit key="label.pay" />
-    	</a>
+    	</a -->
     </body>
     </html>
 </jsp:root>

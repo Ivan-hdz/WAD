@@ -7,10 +7,11 @@
 	font-size: 16px;
 	border-radius: 5px;
 	opacity: 0.8;
-	transitions: opacity 2s;
+	transitions: all 2s ease-in-out;
 	cursor: pointer;
 	margin: 5px;
 }
+
 .btn-primary {
 	color: #f9f9f9;
 	background-color: #141414;
@@ -28,6 +29,51 @@
 }
 .btn:hover {
 	opacity: 1;
+	transform: scale(1.1);
+}
+
+.items-container {
+	flex-direction: row;
+	 display: flex; 
+	 flex-wrap: wrap
+}
+
+.item-picture{
+	height: 100%; width: 30%; 
+}
+.item-picture img {
+	border-radius: 20px;
+	transitions: all 2s;
+	width: 40%;
+	margin-left: 30%;
+	margin-right: 30%;
+	height: auto;
+	filter: grayscale(1);
+}
+.item-picture img:hover {
+	transform: scale(1.1);
+	filter: grayscale(0);
+} 
+
+.hr {
+	border: 2px solid #0abde3;
+	width: 20vw;
+	height: 0px;
+	border-radius: 5px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 2px;
+	margin-bottom: 2px;
+}
+
+ .menu {
+	display: block;
+	flex-direction: row;
+	width: 100vw;
+	flex-wrap: wrap;
+	align-items: center;
+	text-align: center;
+	height: fit-content;
 }
 .txtWhite {
 	color: #f9f9f9;
@@ -40,6 +86,8 @@ body {
 	display: flex;
 	flex-wrap: wrap;
 	font-family: Roboto monospaced, sans-serif;
+	padding: 0;
+	margin: 0;
 }
 .container {
 	height: fit-content;
@@ -69,11 +117,6 @@ body {
 	align-items: center;
 	
 }
-
-a{
-	height: fit-content;
-	width: fit-content;
-}
 .errorMessage {
 	color: #d63031;
 	font-weight: bold;
@@ -85,5 +128,51 @@ input {
 	text-align: center;
 	padding: 2px;
 	color: #f9f9f9;
+}
+a {
+	text-decoration: none;
+}
+div .formButton {
+	display: inline-block;
+}
+.card {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	width: 99vw;
+	height: fit-content;
+	text-align: justify;
+	align-items: center;
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+h1 {
+	margin-left: auto;
+	margin-right: auto;
+	height: fit-content;
+}
+div {
+	margin-bottom: 0px;
+	padding-bottom: 0px;
+}
+
+.message-box {
+	border: 1px solid #10ac84;
+	background-color: #1dd1a1;
+	margin: 5px;
+	height: fit-content;
+	display: inline-block;
+	margin-left: auto;
+	color: #f9f9f9;
+	font-weight: bold;
+	border-radius: 5px;
+	margin-right: auto;
+}
+.message-box * {
+	margin: 5px;
+}
+
+.item-description {
+	height: auto; width: 60%; flex-direction: column;
 }
 

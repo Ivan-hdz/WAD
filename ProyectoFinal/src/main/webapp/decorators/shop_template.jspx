@@ -8,15 +8,26 @@
 <html lang="es-MX">
 <head>
 	<link href="${pageContext.request.contextPath}/decorators/css/global.css" rel="stylesheet" />
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1" />
 </head>
-<body class="container-vertical">
+<body>
 <div class="message-box">
 	<s:actionmessage />
 	<s:actionerror />
 </div>
-<div class="container absolute-center container-vertical">
-	<decorator:body/>
-</div>
+	<div class="menu"> 
+	   	<a href="${pageContext.request.contextPath}/shop/home">
+    		<s:submit cssClass="btn btn-primary" type="button" key="label.goHome" />
+    	</a>
+    	<a href="${pageContext.request.contextPath}/shop/show_cart">
+    		<s:submit type="button" cssClass="btn btn-warn" key="label.goCart" />
+    	</a>
+    	<a  href="${pageContext.request.contextPath}/do_logout">
+	   		<s:submit type="button" key="label.logout" cssClass="btn btn-danger" />
+	   	</a>
+  	</div>
+  
+  	<decorator:body></decorator:body>
 </body>
 </html>
 </jsp:root>

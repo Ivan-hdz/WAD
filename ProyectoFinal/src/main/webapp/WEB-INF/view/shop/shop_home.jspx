@@ -10,32 +10,25 @@
         <title><s:text name="title.shop" /></title>
     </head>
     <body>
-    	<a href="${pageContext.request.contextPath}/do_logout">
-    		<s:submit key="label.logout" />
-    	</a>
-    	<a href="${pageContext.request.contextPath}/shop/show_cart">
-    		<s:submit key="label.goCart" />
-    	</a>
     	
     	<h1><s:text name="title.shop" /> </h1>
-    	<s:actionerror />
-    	<s:actionmessage />
     	<c:if test="${!empty items }">
-    		<div style="flex-direction: row; display: flex; flex-wrap: wrap">
+    		<div class="items-container">
     			<c:forEach items="${items}" var="it" >
-	    			<div style="padding: 10px; border: 1px solid black; display: flex; flex-direction: row; flex-wrap: wrap; width: 480px; height: fit-content; " >
-	    				<div style="height: 100%; width: 40%; ">
-	    					<img src="${it.imgUrl }" width="95%" height="auto" />
+	    			<div class="card" >
+	    				<div class="item-picture">
+	    					<img src="${it.imgUrl }"  />
 	    				</div>
-	    				<div style="height: auto; width: 60%; flex-direction: column;">
+	    				<div class="item-description">
 	    					<h2>${it.name} </h2>
 	    					<h3>$ ${it.price }</h3>
 	    					<h5>${it.description }</h5>
 	    					 <s:form action="add_to_cart" namespace="/shop" method="POST">
 	    					 <input type="hidden" name="item.id" value="${it.id }" />
-	    					 <s:submit type="button" key="label.addToCart" name=""></s:submit>
+	    					 <s:submit cssClass="btn btn-danger" type="button" key="label.addToCart" name=""></s:submit>
 	    					 </s:form>
 	    				</div>
+	    			<div class="hr"></div>
 	    			</div>
 	    		</c:forEach>
 	    	</div>

@@ -13,8 +13,14 @@
 		a los recursos que empaten con el patrón definido -->
 	
 	<decorator name="initial" page="initial_template.jspx">
-		<pattern>/home*</pattern>
-		<pattern>/signup*</pattern>
-		<pattern>/login*</pattern>
+		<pattern>/home</pattern>
+		<pattern>/signup</pattern>
+		<pattern>/login</pattern>
+	</decorator>
+	<decorator name="shop" page="shop_template.jspx">
+		<pattern>/shop</pattern>
+		<pattern>/shop/home</pattern>
+		<pattern>/shop/checkout</pattern>
+		<pattern>/shop/show_cart</pattern>
 	</decorator>
 </decorators> 

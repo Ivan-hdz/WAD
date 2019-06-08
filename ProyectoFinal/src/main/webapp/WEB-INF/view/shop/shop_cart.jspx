@@ -10,39 +10,32 @@
         <title><s:text name="title.cart" /></title>
     </head>
     <body>
-    	<a  href="${pageContext.request.contextPath}/do_logout">
-    		<s:submit key="label.logout" />
-    	</a>
-    	<a href="${pageContext.request.contextPath}/shop/home">
-    		<s:submit key="label.goHome" />
-    	</a>
-    	<a href="${pageContext.request.contextPath}/shop/checkout">
-    		<s:submit key="title.checkout" />
-    	</a>
-    	
-    	
-    	<h1> <s:text name="title.cart"></s:text> </h1>
-    	<s:actionmessage />
-    	<s:actionerror />
+
+    	<h1> <s:text name="title.cart" /> </h1>
     	<c:if test="${!empty userCart }">
-    		<div style="flex-direction: column; display: flex; flex-wrap: wrap">
+    		<div class="items-container" >
     			<c:forEach items="${userCart}" var="uStock" >
-	    			<div style="padding: 10px; border: 1px solid black; display: flex; flex-direction: row; flex-wrap: wrap; width: auto; height: fit-content; " >
-	    				<div style="height: 100%; width: 10vw; ">
-	    					<img src="${uStock.item.imgUrl }" width="95%" height="auto" />
+	    			<div class="card" >
+	    				<div class="item-picture">
+	    					<img src="${uStock.item.imgUrl }"  />
 	    				</div>
-	    				<div style="height: auto; width: 60%; flex-direction: column;">
+	    				<div class="item-description" >
 	    					<h2>${uStock.item.name} </h2>
 	    					<h3>$ ${uStock.item.price }</h3>
 	    					<h4> ${uStock.quantity } </h4>
 	    					<h5>${uStock.item.description }</h5>
 	    					 <s:form action="remove_from_cart" namespace="/shop" method="POST">
 	    					 <input type="hidden" name="item.id" value="${uStock.item.id }" />
-	    					 <s:submit type="button" key="label.removeFromCart" name=""></s:submit>
+	    					 <s:submit cssClass="btn btn-danger" type="button" key="label.removeFromCart" name=""></s:submit>
 	    					 </s:form>
 	    				</div>
+	    				
+	    			<div class="hr"></div>
 	    			</div>
 	    		</c:forEach>
+     <!-- a href="${pageContext.request.contextPath}/shop/checkout">
+		    		<s:submit cssClass="btn btn-warn" key="title.checkout" />
+		    	</a-->
 	    	</div>
     	</c:if>
     </body>
