@@ -1,8 +1,8 @@
-let error = false;
+
 function reportError(msg) {
 	 
     // Show the error in the form:
-    $('#payment-errors').text(msg).addClass('message-box');
+    $('#payment-errors').text(msg).addClass('error-message');
  
     // Re-enable the submit button:
     $('#submitBtn').prop('disabled', false);
@@ -33,6 +33,7 @@ function stripeResponseHandler(status, response) {
 }
 
 $(document).ready(function() {
+	let error = false;
     $("#payment-form").submit(function(event) {
         $('#submitBtn').attr('disabled', 'disabled');
      // Get the values:
