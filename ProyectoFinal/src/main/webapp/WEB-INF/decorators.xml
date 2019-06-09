@@ -20,7 +20,10 @@
 	<decorator name="shop" page="shop_template.jspx">
 		<pattern>/shop</pattern>
 		<pattern>/shop/home</pattern>
-		<pattern>/shop/checkout</pattern>
 		<pattern>/shop/show_cart</pattern>
+	</decorator>
+	<decorator name="shop_checkout" page="shop_checkout_template.jspx">
+		<pattern>/shop/checkout</pattern>
+		<pattern>/shop/do_checkout</pattern>
 	</decorator>
 </decorators> 

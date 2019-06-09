@@ -69,9 +69,10 @@
  .menu {
 	display: block;
 	flex-direction: row;
-	width: 100vw;
+	width: 99vw;
 	flex-wrap: wrap;
 	align-items: center;
+	position: relative;
 	text-align: center;
 	height: fit-content;
 }
@@ -107,14 +108,15 @@ body {
 	flex-direction: row;
 }
 .absolute-center{
-	margin-top: auto;
+	margin-top: 30vh;
 	margin-bottom: auto;
-	margin-left: 33%;
+	margin-left: 33vw;
 	margin-right: auto;
 	width: 30%;
-	height: 30%;
+	height: fit-content;
 	text-align: center;
 	align-items: center;
+	position: absolute;
 	
 }
 .errorMessage {
@@ -128,6 +130,7 @@ input {
 	text-align: center;
 	padding: 2px;
 	color: #f9f9f9;
+	margin: 5px;
 }
 a {
 	text-decoration: none;
@@ -175,4 +178,21 @@ div {
 .item-description {
 	height: auto; width: 60%; flex-direction: column;
 }
+.btn-block {
+	width: 90vw;
+	margin-left: 4vw;
+	margin-right: 4vw;
+	display: block;
+}
+.btn-100 {
+	width: 100%;
+}
+.absolute {
+	position: absolute;
+}
+.margin-auto {
+	margin-left: auto;
+	margin-right: auto;
+}
+
 

@@ -9,11 +9,7 @@
 <head>
 	<link href="${pageContext.request.contextPath}/decorators/css/global.css" rel="stylesheet" />
 </head>
-<body class="container-vertical">
-<div class="message-box">
-	<s:actionmessage />
-	<s:actionerror />
-</div>
+<body>
 <div class="container absolute-center container-vertical">
 	<decorator:body/>
 </div>

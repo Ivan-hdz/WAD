@@ -85,7 +85,8 @@
 			values/message/message_es,
 			values/labels/label,
 			values/labels/label_es,
-			values/session_keys/session
+			values/session_keys/session,
+			values/stripe/keys
 	"/>
 
 	<package name="my-interceptors" extends="struts-default" >
@@ -167,11 +168,11 @@
         </action>
         
         <action name="do_checkout" class="stockAction" method="doCheckout">
-    		<result name="success">/WEB-INF/view/shop/shop_checkout.jsp</result>
+    		<result name="success, input">/WEB-INF/view/shop/shop_checkout.jspx</result>
     	</action>
     	
     	<action name="checkout" class="stockAction">
-    		<result name="success">/WEB-INF/view/shop/shop_checkout.jsp</result>
+    		<result name="success">/WEB-INF/view/shop/shop_checkout.jspx</result>
     	</action>
     	
     </package>

@@ -29,5 +29,23 @@
   </div>
   	<decorator:body></decorator:body>
 </body>
+  <jsp:text>
+    	<![CDATA[
+ 			<!-- JQuery -->
+    		<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+  				integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+ 				crossorigin="anonymous">
+			</script>
+ 			<!-- Stripe API -->
+    		<script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+    		<!-- Stripe public key -->
+    		<script type="text/javascript">
+    			Stripe.setPublishableKey('pk_test_Er5vE6WxMfD6hmVL7kSa289i00COgS5EC8');
+    		</script>
+    		<!-- My script -->
+    		<script type="text/javascript" src="${pageContext.request.contextPath}/js/checkout.js"></script>
+    	
+    	]]>
+    </jsp:text>
 </html>
 </jsp:root>

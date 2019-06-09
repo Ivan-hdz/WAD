@@ -10,9 +10,16 @@
         <title><s:text name="title.cart" /></title>
     </head>
     <body>
-
+    <div class="container-vertical margin-auto">
     	<h1> <s:text name="title.cart" /> </h1>
+    	<c:if test="${empty userCart }">
+    	<h2><s:text name="label.emptyCart"></s:text></h2>
+    	</c:if>
+   	</div>
     	<c:if test="${!empty userCart }">
+    	<a href="${pageContext.request.contextPath}/shop/checkout">
+    		<s:submit type="button" cssClass="btn btn-danger btn-block" key="title.checkout" />
+    	</a>
     		<div class="items-container" >
     			<c:forEach items="${userCart}" var="uStock" >
 	    			<div class="card" >
@@ -26,17 +33,18 @@
 	    					<h5>${uStock.item.description }</h5>
 	    					 <s:form action="remove_from_cart" namespace="/shop" method="POST">
 	    					 <input type="hidden" name="item.id" value="${uStock.item.id }" />
-	    					 <s:submit cssClass="btn btn-danger" type="button" key="label.removeFromCart" name=""></s:submit>
+	    					 <s:submit cssClass="btn btn-primary" type="button" key="label.removeFromCart" name=""></s:submit>
 	    					 </s:form>
 	    				</div>
 	    				
 	    			<div class="hr"></div>
 	    			</div>
 	    		</c:forEach>
-     <!-- a href="${pageContext.request.contextPath}/shop/checkout">
-		    		<s:submit cssClass="btn btn-warn" key="title.checkout" />
-		    	</a-->
 	    	</div>
+	    	<a href="${pageContext.request.contextPath}/shop/checkout">
+	    		<s:submit type="button" cssClass="btn btn-danger btn-block" key="title.checkout" />
+	    	</a>
+	    	
     	</c:if>
     </body>
     </html>

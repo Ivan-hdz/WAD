@@ -1,0 +1,33 @@
+<?xml  version="1.0" encoding="UTF-8" ?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page"
+          xmlns="http://www.w3.org/1999/xhtml"
+          xmlns:s="/struts-tags"
+          xmlns:c="http://java.sun.com/jsp/jstl/core"
+          version="2.0">
+    <jsp:directive.page  contentType="text/html; charset=UTF-8"/>
+    <html>
+    <head>
+        <title><s:text name="title.cart" /></title>
+    </head>
+    <body>
+    	<!--  a href="${pageContext.request.contextPath}/shop/do_checkout">
+    		<s:submit key="label.pay" />
+    	</a -->
+    	<div class="container  container-vertical absolute-center">
+    		<h1><s:text name="title.checkout"></s:text></h1>
+    		
+	    	<s:form  id="payment-form" action="do_checkout" method="POST">
+	    		<div id="payment-errors" class="message-box"></div>
+	    		<s:textfield cssClass="card-number" key="label.cardNumber" name="" ></s:textfield>
+	    		<s:textfield cssClass="card-cvc" key="label.cvc" name=""></s:textfield>
+	    		<s:textfield cssClass="card-expiry-month" type="number" key="label.expirationM" name=""></s:textfield>
+	    		<s:textfield cssClass="card-expiry-year" type="number" key="label.expirationY" name=""></s:textfield>
+	    		
+	    		<s:submit id="submitBtn" cssClass="btn btn-danger btn-100" key="label.pay" name="" ></s:submit>
+	    		
+	    	</s:form>
+    	</div>
+    </body>
+    
+    </html>
+</jsp:root>
