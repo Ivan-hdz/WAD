@@ -8,5 +8,6 @@
         <mapping class="mx.ivan.wad.ProyectoFinal.User.UserEntity" />
         <mapping class="mx.ivan.wad.ProyectoFinal.Item.ItemEntity" />
        	<mapping class="mx.ivan.wad.ProyectoFinal.Stock.StockEntity" />
+       	<mapping class="mx.ivan.wad.ProyectoFinal.Ticket.TicketEntity" />
     </session-factory>
 </hibernate-configuration>

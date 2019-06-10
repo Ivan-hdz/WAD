@@ -17,10 +17,13 @@
 </div>
 	<div class="menu"> 
 	   	<a href="${pageContext.request.contextPath}/shop/home">
-    		<s:submit cssClass="btn btn-primary" type="button" key="label.goHome" />
+    		<s:submit cssClass="btn btn-warn" type="button" key="label.goHome" />
     	</a>
     	<a href="${pageContext.request.contextPath}/shop/show_cart">
-    		<s:submit type="button" cssClass="btn btn-warn" key="label.goCart" />
+    		<s:submit type="button" cssClass="btn btn-primary" key="label.goCart" />
+    	</a>
+    	<a href="${pageContext.request.contextPath}/shop/show_tickets">
+    		<s:submit type="button" cssClass="btn btn-primary" key="label.goTickets" />
     	</a>
     	<a  href="${pageContext.request.contextPath}/do_logout">
 	   		<s:submit type="button" key="label.logout" cssClass="btn btn-danger" />

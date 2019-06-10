@@ -11,13 +11,13 @@ public class ItemEntity {
 	@GeneratedValue
 	private int id;
 	
-	@Column(length = 200, nullable = false, updatable = false, insertable = false)
+	@Column(length = 200, nullable = false, updatable = false)
 	private String name;
-	@Column(length = 2500, nullable = false, updatable = false, insertable = false)
+	@Column(length = 2500, nullable = false, updatable = false)
 	private String description;
-	@Column(length = 6, nullable = false, updatable = false, insertable = false)
+	@Column(length = 6, nullable = false, updatable = false)
 	private Float price;
-	@Column(name= "img_url", length = 1500, updatable = false, insertable = false)
+	@Column(name= "img_url", length = 1500, updatable = false)
 	private String imgUrl;
 	
 	public void setImgUrl(String url) {

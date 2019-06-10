@@ -35,9 +35,27 @@ public interface Service<T> extends Dao<T> {
 	}
 	@Override
 	@Transactional
-	default T getByProperty(String property, String condition, Class<T> type) {
+	default List<T> getAllByProperty(String property, int condition, Class<T> type) {
 		// TODO Auto-generated method stub
-		return getDao().getByProperty(property, condition, type);
+		return getDao().getAllByProperty(property, condition, type);
+	}
+	@Override
+	@Transactional
+	default List<T> getAllByProperty(String property, String condition, Class<T> type) {
+		// TODO Auto-generated method stub
+		return getDao().getAllByProperty(property, condition, type);
+	}
+	@Override
+	@Transactional
+	default T getOneByProperty(String property, int condition, Class<T> type) {
+		// TODO Auto-generated method stub
+		return getDao().getOneByProperty(property, condition, type);
+	}
+	@Override
+	@Transactional
+	default T getOneByProperty(String property, String condition, Class<T> type) {
+		// TODO Auto-generated method stub
+		return getDao().getOneByProperty(property, condition, type);
 	}
 	@Override
 	@Transactional

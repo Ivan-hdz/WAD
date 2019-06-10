@@ -38,26 +38,24 @@ public class ValidateSessionInterceptor implements Interceptor, ServletContextAw
 	@Override
 	public String intercept(ActionInvocation invocation) throws Exception {
 		logger.info("Validating session");
-		return invocation.invoke();
-//		Boolean loggedIn = false;
-//        HttpServletResponse response = (HttpServletResponse) invocation.getInvocationContext().get(StrutsStatics.HTTP_RESPONSE);
-//		Map<String, Object> session = invocation.getInvocationContext().getSession();
-//		try {
-//			ActionSupport as = (ActionSupport)invocation.getAction();
-//			loggedIn = (boolean)session.get(as.getText("session.loggedIn"));
-//			
-//		} catch(Exception e) {
-//			logger.warning(e.getMessage());
-//			loggedIn = false;
-//		}
-//		if(loggedIn)
-//		{
-//			return invocation.invoke();
-//		}
-//		else {
-//			response.sendRedirect(context.getContextPath() + "/home");
-//			return Action.INPUT;
-//		}
+		Boolean loggedIn = false;
+        HttpServletResponse response = (HttpServletResponse) invocation.getInvocationContext().get(StrutsStatics.HTTP_RESPONSE);
+		Map<String, Object> session = invocation.getInvocationContext().getSession();
+		try {
+			ActionSupport as = (ActionSupport)invocation.getAction();
+			loggedIn = (boolean)session.get(as.getText("session.loggedIn"));
+			
+		} catch(Exception e) {
+			logger.warning(e.getMessage());
+			loggedIn = false;
+		}
+		if(loggedIn)
+		{
+			return invocation.invoke();
+		} else {
+			response.sendRedirect(context.getContextPath() + "/home");
+			return Action.INPUT;
+		}
 		
 		
 	}

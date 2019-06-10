@@ -50,7 +50,7 @@ public class UserAction extends ActionSupport implements ActionController<UserEn
     
     @SkipValidation
     public String login() {
-    	UserEntity placeholder = userService.getByProperty("email", user.getEmail(), UserEntity.class);
+    	UserEntity placeholder = userService.getOneByProperty("email", user.getEmail(), UserEntity.class);
     	if(placeholder != null) {
     		if(placeholder.getPassword().equals(user.getPassword())) {
     			session.put(getText("session.loggedIn"), true);
@@ -64,8 +64,7 @@ public class UserAction extends ActionSupport implements ActionController<UserEn
     }
     
     public String logout() {
-    	session.remove(getText("session.loggedIn"));
-    	session.remove(getText("session.currentUser"));
+    	session.clear();
     	return SUCCESS;
     }
     

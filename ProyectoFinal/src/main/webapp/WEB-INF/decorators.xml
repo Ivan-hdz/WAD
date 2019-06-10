@@ -21,6 +21,7 @@
 		<pattern>/shop</pattern>
 		<pattern>/shop/home</pattern>
 		<pattern>/shop/show_cart</pattern>
+		<pattern>/shop/show_tickets</pattern>
 	</decorator>
 	<decorator name="shop_checkout" page="shop_checkout_template.jspx">
 		<pattern>/shop/checkout</pattern>

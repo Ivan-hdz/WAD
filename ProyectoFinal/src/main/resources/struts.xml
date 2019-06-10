@@ -177,6 +177,10 @@
     		<result name="success">/WEB-INF/view/shop/shop_checkout.jspx</result>
     	</action>
     	
+    	<action name="show_tickets" class="ticketAction" method="getMyTickets">
+    		<result name="success" >/WEB-INF/view/shop/shop_ticket.jspx</result>
+    	</action>
+    	
     </package>
     
  

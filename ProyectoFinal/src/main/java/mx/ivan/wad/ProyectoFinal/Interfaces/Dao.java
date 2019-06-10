@@ -9,12 +9,14 @@ public interface Dao<T> {
 
     default void create(T object) {
     	getSessionFactory().getCurrentSession().save(object);
+    	getSessionFactory().getCurrentSession().flush();
     }
 
     default void delete(int id, Class<T> type) {
         T object = getSessionFactory().getCurrentSession().get(type, id);
         if(object != null)
             getSessionFactory().getCurrentSession().delete(object);
+        getSessionFactory().getCurrentSession().flush();
     }
 
     @SuppressWarnings("unchecked")
@@ -28,18 +30,41 @@ public interface Dao<T> {
     }
 
 
-    default T getByProperty(String property, String condition, Class<T> type) {
-		Query<T> q = getSessionFactory().getCurrentSession().createQuery("from UserEntity where " + property + " = :condition", type);
+    default T getOneByProperty(String property, String condition, Class<T> type) {
+		Query<T> q = getSessionFactory().getCurrentSession().createQuery("from " + type.getName() + " where " + property + " = :condition", type);
 //			q.setParameter("property", property);
 		q.setParameter("condition", condition);
 		return (T) q.uniqueResult();
 	}
 
+    default T getOneByProperty(String property, int condition, Class<T> type) {
+		Query<T> q = getSessionFactory().getCurrentSession().createQuery("from " + type.getName() + " where " + property + " = :condition", type);
+//			q.setParameter("property", property);
+		q.setParameter("condition", condition);
+		return (T) q.uniqueResult();
+	}
+    
+    default List<T> getAllByProperty(String property, String condition, Class<T> type) {
+		Query<T> q = getSessionFactory().getCurrentSession().createQuery("from " + type.getName() + " where " + property + " = :condition", type);
+//			q.setParameter("property", property);
+		q.setParameter("condition", condition);
+		return (List<T>) q.list();
+	}
+
+    default List<T> getAllByProperty(String property, int condition, Class<T> type) {
+		Query<T> q = getSessionFactory().getCurrentSession().createQuery("from "+ type.getName() +" where " + property + " = :condition", type);
+//			q.setParameter("property", property);
+		q.setParameter("condition", condition);
+		return (List<T>) q.list();
+	}
+
+    
 	@SuppressWarnings("unchecked")
     default void update(T object) {
 		// TODO Auto-generated method stub
 		T merged = (T)this.getSessionFactory().getCurrentSession().merge(object);
     	this.getSessionFactory().getCurrentSession().saveOrUpdate(merged);
+    	getSessionFactory().getCurrentSession().flush();
 	}
 	
     SessionFactory getSessionFactory() throws UnsupportedOperationException;

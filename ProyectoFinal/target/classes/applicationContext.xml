@@ -40,6 +40,7 @@
 <!--     Stock -->
 	<bean name="stockAction" class="mx.ivan.wad.ProyectoFinal.Stock.StockAction" scope="prototype">
         <property name="service" ref="stockService"/>
+        <property name="ticketService" ref="ticketService" />
     </bean>
 
 	<bean id="stockService" class="mx.ivan.wad.ProyectoFinal.Stock.StockService">
@@ -50,6 +51,18 @@
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
     
+    <!-- Ticket -->
+    <bean name="ticketAction" class="mx.ivan.wad.ProyectoFinal.Ticket.TicketAction" scope="prototype">
+        <property name="service" ref="ticketService"/>
+    </bean>
+
+	<bean id="ticketService" class="mx.ivan.wad.ProyectoFinal.Ticket.TicketService">
+        <property name="dao" ref="ticketDao"/>
+    </bean>
+
+    <bean id="ticketDao" class="mx.ivan.wad.ProyectoFinal.Ticket.TicketDao">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
 
     <context:property-placeholder location="classpath:properties/jdbc.properties, classpath:properties/hibernate.properties"/>
 
